@@ -1,0 +1,13 @@
+version: '3.9'  # Especifica la versión de Docker Compose
+
+services:
+  web:  # Nombre del servicio (puedes cambiarlo si quieres)
+    build: .  # Indica que la imagen se construirá desde el Dockerfile actual
+    ports:
+      - "5000:5000"  # Mapea el puerto 5000 del contenedor al puerto 5000 de tu máquina
+    volumes:
+      - .:/app # Monta el directorio actual en el directorio /app del contenedor
+    environment:
+      - FLASK_APP=lab.py # Indica el nombre del archivo de tu aplicación Flask
+      - FLASK_ENV=development
+    command: flask run --host=0.0.0.0 # Comando para ejecutar la aplicación Flask
